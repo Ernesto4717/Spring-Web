@@ -1,18 +1,84 @@
 package com.softtek.academy.end.repository;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.softtek.academy.end.domain.Cart;
+import com.softtek.academy.end.domain.ShipTo;
+import com.softtek.academy.end.domain.Status;
 
 @Repository
-public interface CartRepository extends JpaRepository<Cart, Long>{
+public class CartRepository {
+
+	public List<Cart> list() {
+		StringBuilder sql = new StringBuilder();
+		
+		sql.append("SELECT c.*, st.name ship_to, s.description status");
+		sql.append("  FROM cart c");
+		sql.append("  JOIN ship_to st ON st.ship_to_id = c.ship_to_id");
+		sql.append("  JOIN status s ON s.status_id = c.status_id");
+
+        
+        
+        final List<Cart> carts = new ArrayList<Cart>();
+        
+        try (
+        		Connection connection = DriverManagerDatabase.getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(sql.toString());
+        	) {
+        	
+            ResultSet rs = preparedStatement.executeQuery();
+            
+            while (rs.next()) {
+	            carts.add(this.buildCart(rs));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+		
+		return carts; 
+	}
 	
-	@Query(name = "findOneCart", nativeQuery = true)
-	public Cart cart(@Param ("cartId") Long cart_id);
+	public Cart findOne(final Long cartId) {
+        
+        Cart cart = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            Connection connection = DriverManagerDatabase.getConnection();
+            preparedStatement = connection.prepareStatement("SELECT * FROM cart WHERE cart_id = ?");
+            preparedStatement.setLong(1, cartId);
+            
+            ResultSet rs = preparedStatement.executeQuery();
+            
+            rs.next();
+            cart = this.buildCart(rs);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+		
+		return cart;
+	}
 	
-	
+	private Cart buildCart(final ResultSet rs) throws SQLException {
+		Cart cart = new Cart();
+		
+		final int columnCount = rs.getMetaData().getColumnCount();
+		
+		cart.setId(rs.getLong("cart_id"));
+        cart.setLinesAmount(rs.getDouble("lines_amount"));
+        cart.setShippingAmount(rs.getDouble("shipping_amount"));
+        cart.setCartAmount(rs.getDouble("cart_amount"));
+        cart.setShipTo(new ShipTo(rs.getLong("ship_to_id"), columnCount>10 ? rs.getString("ship_to") : ""));
+        cart.setStatus(new Status(rs.getLong("status_id"), columnCount>10 ? rs.getString("status") : "",  ""));
+        
+		return cart;
+	}
 }

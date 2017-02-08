@@ -44,7 +44,7 @@ public class UserController {
 
 	@RequestMapping(value = "/ListData", method = RequestMethod.GET)
 	public ResponseEntity<List<User>> getAllUsers() {
-		List<User> users = userService.userList();
+		List<User> users = userService.list();
 		return new ResponseEntity<List<User>>(users, HttpStatus.OK);
 	}
 
@@ -53,33 +53,33 @@ public class UserController {
 		return "editUser";
 	}
 	
-	@RequestMapping(value = "/editData")
-	public ResponseEntity<User> editUser(@RequestParam String username) {
-		
-		User user = userService.user(username);
-		return new ResponseEntity<User>(user, HttpStatus.OK);
-	}
+//	@RequestMapping(value = "/editData")
+//	public ResponseEntity<User> editUser(@RequestParam String username) {
+//		
+//		User user = userService.user(username);
+//		return new ResponseEntity<User>(user, HttpStatus.OK);
+//	}
 
 	@RequestMapping(value = "/create")
 	public String create() {
 		return "createUser";
 	}
 
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String updateUser(@ModelAttribute User user, HttpServletRequest request) {
-
-		if (userService.update(user)) {
-			return "redirect:/User/List";
-		}
-		return "redirect:/User/edit?username=" + user.getUsername() + "&status=Not valid";
-
-	}
-
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String addUser(@RequestBody User user) {
-		if (userService.create(user)) {
-			return "users";
-		}
-		return "create";
-	}
+//	@RequestMapping(value = "/update", method = RequestMethod.POST)
+//	public String updateUser(@ModelAttribute User user, HttpServletRequest request) {
+//
+//		if (userService.update(user)) {
+//			return "redirect:/User/List";
+//		}
+//		return "redirect:/User/edit?username=" + user.getUsername() + "&status=Not valid";
+//
+//	}
+//
+//	@RequestMapping(value = "/add", method = RequestMethod.POST)
+//	public String addUser(@RequestBody User user) {
+//		if (userService.create(user)) {
+//			return "users";
+//		}
+//		return "create";
+//	}
 }
