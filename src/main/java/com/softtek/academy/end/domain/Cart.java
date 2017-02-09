@@ -1,5 +1,9 @@
 package com.softtek.academy.end.domain;
 
+import java.util.Objects;
+
+import com.google.common.base.MoreObjects;
+
 public class Cart {
 
 	private Long id;
@@ -60,10 +64,32 @@ public class Cart {
 	
 
 	@Override
+	public boolean equals(Object obj) {
+
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		final Cart other = (Cart) obj;
+		return Objects.equals(this.id, other.id) 
+				&& Objects.equals(this.linesAmount, other.linesAmount)
+				&& Objects.equals(this.shippingAmount, other.shippingAmount) 
+				&& Objects.equals(this.cartAmount, other.cartAmount)
+				&& Objects.equals(this.shipTo, other.shipTo);
+	}
+
+	@Override
+	public int hashCode() {
+
+		return Objects.hash(this.id, this.linesAmount, this.shippingAmount, this.cartAmount, this.shipTo);
+
+	}
+
+	@Override
 	public String toString() {
-		return "Cart [id=" + this.id + ", linesAmount=" + this.linesAmount + ", shippingAmount=" + this.shippingAmount
-				+ ", cartAmount=" + this.cartAmount + ", shipTo=" + this.shipTo + ", status=" + this.status
-				+ ", createUser=" + "]";
+
+		return MoreObjects.toStringHelper(this).add("id", id).add("linesAmount", linesAmount).toString();
+
 	}
 
 }

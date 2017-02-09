@@ -1,5 +1,9 @@
 package com.softtek.academy.end.domain;
 
+import java.util.Objects;
+
+import com.google.common.base.MoreObjects;
+
 public class ShipTo {
 
 	private Long id;
@@ -24,9 +28,29 @@ public class ShipTo {
 		this.name = name;
 	}
 	
-	
+	@Override
+	public boolean equals(Object obj) {
+
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		final ShipTo other = (ShipTo) obj;
+		return Objects.equals(this.id, other.id)
+				&& Objects.equals(this.name, other.name);
+	}
+
+	@Override
+	public int hashCode() {
+
+		return Objects.hash(this.id, this.name);
+
+	}
+
 	@Override
 	public String toString() {
-		return "ShipTo [id=" + id + ", name=" + name + "]";
+
+		return MoreObjects.toStringHelper(this).add("id", id).add("name", name).toString();
+
 	}
 }

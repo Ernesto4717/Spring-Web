@@ -1,5 +1,9 @@
 package com.softtek.academy.end.domain;
 
+import java.util.Objects;
+
+import com.google.common.base.MoreObjects;
+
 public class User {
 
 	private String userName;
@@ -49,9 +53,32 @@ public class User {
 	}
 
 	@Override
+	public boolean equals(Object obj) {
+
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		final User other = (User) obj;
+		return Objects.equals(this.userName, other.userName) 
+				&& Objects.equals(this.password, other.password)
+				&& Objects.equals(this.name, other.name) 
+				&& Objects.equals(this.userRoleId, other.userRoleId)
+				&& Objects.equals(this.active, other.active);
+	}
+
+	@Override
+	public int hashCode() {
+
+		return Objects.hash(this.userName, this.password, this.name, this.userRoleId, this.active);
+
+	}
+
+	@Override
 	public String toString() {
-		return "User [userName=" + userName + ", password=" + password + ", name=" + name + ", userRoleId=" + userRoleId
-				+ ", active=" + active + "]";
+
+		return MoreObjects.toStringHelper(this).add("userName", userName).add("password", password).toString();
+
 	}
 
 }

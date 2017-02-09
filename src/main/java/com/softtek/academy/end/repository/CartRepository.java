@@ -23,8 +23,6 @@ public class CartRepository {
 		sql.append("  FROM cart c");
 		sql.append("  JOIN ship_to st ON st.ship_to_id = c.ship_to_id");
 		sql.append("  JOIN status s ON s.status_id = c.status_id");
-
-        
         
         final List<Cart> carts = new ArrayList<Cart>();
         
