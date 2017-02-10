@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.softtek.academy.end.domain.User;
@@ -13,7 +14,9 @@ import com.softtek.academy.end.repository.UserRepository;
 
 @Service
 public class UserService {
-	private UserRepository userRepository = new UserRepository();
+	
+	@Autowired
+	private UserRepository userRepository;
 
 	public List<User> list() {
 		List<User> users = userRepository.list();

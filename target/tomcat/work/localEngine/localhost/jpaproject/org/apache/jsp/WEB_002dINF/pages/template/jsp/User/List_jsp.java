@@ -69,7 +69,7 @@ public final class List_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t<tbody>\r\n");
       out.write("\t\t\t<tr data-ng-repeat=\"user in userList\">\r\n");
       out.write("\t\t\t\t<td><a\r\n");
-      out.write("\t\t\t\t\tdata-ng-href=\"/jpaproject/User/edit#?username={{user.username}}\">{{user.username}}</a></td>\r\n");
+      out.write("\t\t\t\t\tdata-ng-href=\"/jpaproject/User/edit#?username={{user.userName}}\">{{user.userName}}</a></td>\r\n");
       out.write("\t\t\t\t<td data-ng-bind=\"user.name\"></td>\r\n");
       out.write("\t\t\t</tr>\r\n");
       out.write("\t\t</tbody>\r\n");

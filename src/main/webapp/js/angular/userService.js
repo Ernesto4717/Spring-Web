@@ -16,6 +16,7 @@ myApp.controller(
 				method : "GET",
 				url : "/jpaproject/User/ListData"
 			}).then(function success(response) {
+				console.log(response.data);
 				$scope.userList = response.data;
 			});
 

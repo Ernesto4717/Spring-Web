@@ -1,61 +1,46 @@
 package com.softtek.academy.end.repository;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 
 import com.softtek.academy.end.domain.User;
 import com.softtek.academy.end.domain.UserRole;
 
+@Repository
 public class UserRepository {
-	
+
+	@Autowired
+	JdbcTemplate jdbcTemplate;
+
 	public List<User> list() {
 		StringBuilder sql = new StringBuilder();
 
 		sql.append("SELECT u.*, ur.description description ");
 		sql.append("FROM user u ");
 		sql.append("JOIN user_role ur ON ur.user_role_id = u.user_role_id");
-
-		final List<User> users = new ArrayList<User>();
-
-		try (Connection connection = DriverManagerDatabase.getConnection();
-				PreparedStatement preparedStatement = connection.prepareStatement(sql.toString());) {
-
-			ResultSet rs = preparedStatement.executeQuery();
-
-			while (rs.next()) {
-				users.add(this.buildUser(rs));
+		return this.jdbcTemplate.query(sql.toString(), new RowMapper<User>() {
+			public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+				return buildUser(rs);
 			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return users;
+		});
 	}
 
 	public User findOne(final String userName) {
-		PreparedStatement preparedStatement = null;
+		return this.jdbcTemplate.queryForObject("SELECT * FROM user WHERE username = '" + userName + "'",
+				new RowMapper<User>() {
 
-		User user = null;
-		try {
-			Connection connection = DriverManagerDatabase.getConnection();
-			preparedStatement = connection.prepareStatement("SELECT * FROM user WHERE username = ?");
-			preparedStatement.setString(1, userName);
+					@Override
+					public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+						return buildUser(rs);
+					}
 
-			ResultSet rs = preparedStatement.executeQuery();
-
-			rs.next();
-			user = this.buildUser(rs);
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return user;
+				});
 	}
 
 	private User buildUser(final ResultSet rs) throws SQLException {
