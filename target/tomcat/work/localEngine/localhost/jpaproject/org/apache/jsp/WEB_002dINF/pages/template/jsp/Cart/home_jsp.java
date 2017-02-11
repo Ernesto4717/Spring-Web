@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class List_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -50,43 +50,13 @@ public final class List_jsp extends org.apache.jasper.runtime.HttpJspBase
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("<div data-ng-controller=\"cartController\">\r\n");
-      out.write("\t<ol class=\"breadcrumb\">\r\n");
-      out.write("\t\t<li><a href=\"/jpaproject/home\">Home</a></li>\r\n");
-      out.write("\t\t<li><a href=\"home\">Cart</a></li>\r\n");
-      out.write("\t\t<li class=\"active\">List</li>\r\n");
-      out.write("\t</ol>\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("\t<div class=\"table-responsive\">\r\n");
-      out.write("\r\n");
-      out.write("\t\t<table class=\"table\">\r\n");
-      out.write("\t\t\t<thead class=\"thead-inverse\">\r\n");
-      out.write("\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t<th width=\"5%\">Cart Id</th>\r\n");
-      out.write("\t\t\t\t\t<th width=\"15%\">Lines Amount</th>\r\n");
-      out.write("\t\t\t\t\t<th width=\"15%\">Shipping Amount</th>\r\n");
-      out.write("\t\t\t\t\t<th width=\"15%\">Cart Amount</th>\r\n");
-      out.write("\t\t\t\t\t<th width=\"19%\">Ship to</th>\r\n");
-      out.write("\t\t\t\t\t<th width=\"19%\">Status</th>\r\n");
-      out.write("\t\t\t\t</tr>\r\n");
-      out.write("\r\n");
-      out.write("\t\t\t</thead>\r\n");
-      out.write("\t\t\t<tbody>\r\n");
-      out.write("\r\n");
-      out.write("\t\t\t\t<tr data-ng-repeat=\"cart in cartList\">\r\n");
-      out.write("\t\t\t\t\t<td><a data-ng-href=\"edit?cartId={{cart.id}}\">{{cart.id}}</a></td>\r\n");
-      out.write("\t\t\t\t\t<td data-ng-bind=\"cart.linesAmount | currency\"></td>\r\n");
-      out.write("\t\t\t\t\t<td data-ng-bind=\"cart.shippingAmount | currency\"></td>\r\n");
-      out.write("\t\t\t\t\t<td data-ng-bind=\"cart.cartAmount | currency\"></td>\r\n");
-      out.write("\t\t\t\t\t<td data-ng-bind=\"cart.shipTo.name\"></td>\r\n");
-      out.write("\t\t\t\t\t<td data-ng-bind=\"cart.status.description\"></td>\r\n");
-      out.write("\t\t\t\t</tr>\r\n");
-      out.write("\r\n");
-      out.write("\t\t\t</tbody>\r\n");
-      out.write("\t\t</table>\r\n");
-      out.write("\t</div>\r\n");
-      out.write("</div>");
+      out.write("<ol class=\"breadcrumb\">\r\n");
+      out.write("\t<li><a data-ng-href=\"/jpaproject/home\">Home</a></li>\r\n");
+      out.write("\t<li class=\"active\">Cart</li>\r\n");
+      out.write("</ol>\r\n");
+      out.write("<a href=\"create\"> Create Cart</a>\r\n");
+      out.write("<br>\r\n");
+      out.write("<a href=\"List\"> Cart List</a>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

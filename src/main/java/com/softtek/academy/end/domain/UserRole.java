@@ -5,6 +5,11 @@ public class UserRole {
 	private String id;
 	private String description;
 
+	
+	public UserRole() {
+		super();
+	}
+
 	public UserRole(String id, String description) {
 		this.id = id;
 		this.description = description;

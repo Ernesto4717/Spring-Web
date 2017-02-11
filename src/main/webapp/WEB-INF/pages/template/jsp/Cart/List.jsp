@@ -12,11 +12,11 @@
 			<thead class="thead-inverse">
 				<tr>
 					<th width="5%">Cart Id</th>
-					<th width="15%">Amount</th>
-					<th width="19%">User</th>
-					<th width="20%">Created Date</th>
-					<th width="20%">Modified Date</th>
-					<th width="11%">Products</th>
+					<th width="15%">Lines Amount</th>
+					<th width="15%">Shipping Amount</th>
+					<th width="15%">Cart Amount</th>
+					<th width="19%">Ship to</th>
+					<th width="19%">Status</th>
 				</tr>
 
 			</thead>
@@ -24,11 +24,11 @@
 
 				<tr data-ng-repeat="cart in cartList">
 					<td><a data-ng-href="edit?cartId={{cart.id}}">{{cart.id}}</a></td>
-					<td data-ng-bind="cart.amount | currency"></td>
-					<td data-ng-bind="cart.user.name"></td>
-					<td data-ng-bind="cart.audit.createDate  | date:'medium'"></td>
-					<td data-ng-bind="cart.audit.updateDate | date:'medium'"></td>
-					<td><a data-ng-href="view#?cartId={{cart.id}}">view</a></td>
+					<td data-ng-bind="cart.linesAmount | currency"></td>
+					<td data-ng-bind="cart.shippingAmount | currency"></td>
+					<td data-ng-bind="cart.cartAmount | currency"></td>
+					<td data-ng-bind="cart.shipTo.name"></td>
+					<td data-ng-bind="cart.status.description"></td>
 				</tr>
 
 			</tbody>

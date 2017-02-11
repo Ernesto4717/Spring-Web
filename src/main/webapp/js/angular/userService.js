@@ -16,15 +16,14 @@ myApp.controller(
 				method : "GET",
 				url : "/jpaproject/User/ListData"
 			}).then(function success(response) {
-				console.log(response.data);
 				$scope.userList = response.data;
 			});
 
 			$scope.user;
 
 			$scope.send = function() {
-				console.log($scope.user);
-				$http.post("/jpaproject/User/add", $scope.user).success(
+				console.log($scope.userList[1]);
+				$http.post("/jpaproject/User/add", $scope.userList[1]).success(
 						function(response) {
 							alert("El usuario a sido creado");
 							$window.location = "/jpaproject/User/List";
@@ -32,7 +31,6 @@ myApp.controller(
 			};
 
 			$scope.edit = function() {
-
 				$http({
 					method : "GET",
 					url : "/jpaproject/User/editData",

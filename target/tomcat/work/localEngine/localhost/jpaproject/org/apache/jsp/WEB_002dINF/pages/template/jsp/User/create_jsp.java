@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class edit_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class create_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -50,66 +50,44 @@ public final class edit_jsp extends org.apache.jasper.runtime.HttpJspBase
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("<div data-ng-controller=\"springController\" data-ng-init=\"edit()\">\r\n");
+      out.write("<div data-ng-controller=\"springController\">\r\n");
       out.write("\r\n");
       out.write("\t<ol class=\"breadcrumb\">\r\n");
-      out.write("\t\t<li><a href=\"/jpaproject/home\">Home</a></li>\r\n");
-      out.write("\t\t<li><a href=\"home\">User</a></li>\r\n");
-      out.write("\t\t<li><a href=\"List\">List</a></li>\r\n");
-      out.write("\t\t<li class=\"active\">Edit</li>\r\n");
+      out.write("\t\t<li><a data-ng-href=\"/jpaproject/home\">Home</a></li>\r\n");
+      out.write("\t\t<li><a data-ng-href=\"/jpaproject/User/home\">User</a></li>\r\n");
+      out.write("\t\t<li class=\"active\">Create</li>\r\n");
       out.write("\t</ol>\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("\t<div class=\"container-center \">\r\n");
-      out.write("\t\t<form class=\"form-horizontal\">\r\n");
+      out.write("\t\t<form method=\"post\">\r\n");
       out.write("\r\n");
       out.write("\t\t\t<div class=\"form-group\">\r\n");
-      out.write("\t\t\t\t<div class=\"col-sm-4\">\r\n");
-      out.write("\t\t\t\t\t<label for=\"Username\" class=\"sr-only\">Username</label> <input\r\n");
-      out.write("\t\t\t\t\t\ttype=\"text\" class=\"form-control input-group-lg reg_name\"\r\n");
-      out.write("\t\t\t\t\t\tname=\"username\" data-ng-model=\"user.userName\" readonly=\"readonly\">\r\n");
-      out.write("\t\t\t\t</div>\r\n");
-      out.write("\t\t\t\t<div class=\"col-sm-4\">\r\n");
-      out.write("\t\t\t\t\t<label for=\"password\" class=\"sr-only\"></label> <input\r\n");
-      out.write("\t\t\t\t\t\ttype=\"password\" class=\"form-control input-group-lg\"\r\n");
-      out.write("\t\t\t\t\t\tname=\"password\" placeholder=\"Password:*\"\r\n");
-      out.write("\t\t\t\t\t\tdata-ng-model=\"user.password\">\r\n");
-      out.write("\t\t\t\t</div>\r\n");
-      out.write("\t\t\t</div>\r\n");
-      out.write("\t\t\t<div class=\"form-group\">\r\n");
-      out.write("\t\t\t\t<div class=\"col-sm-8\">\r\n");
-      out.write("\t\t\t\t\t<label for=\"name\" class=\"sr-only\">Name:*</label> <input type=\"text\"\r\n");
-      out.write("\t\t\t\t\t\tclass=\"form-control input-group-lg reg_name\" name=\"name\"\r\n");
-      out.write("\t\t\t\t\t\tdata-ng-model=\"user.name\">\r\n");
-      out.write("\t\t\t\t</div>\r\n");
-      out.write("\t\t\t</div>\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("\t\t\t<div class=\"form-group\">\r\n");
-      out.write("\t\t\t\t<div class=\"col-sm-8\">\r\n");
-      out.write("\t\t\t\t\t<label for=\"name\" class=\"sr-only\">Name:*</label> <input type=\"text\"\r\n");
-      out.write("\t\t\t\t\t\tclass=\"form-control input-group-lg reg_name\" name=\"name\"\r\n");
-      out.write("\t\t\t\t\t\tdata-ng-model=\"user.userRoleId.description\">\r\n");
-      out.write("\t\t\t\t</div>\r\n");
+      out.write("\t\t\t\t<input type=\"number\" placeholder=\"id\" class=\"form-control\"\r\n");
+      out.write("\t\t\t\t\tdata-ng-model=\"user.username\" required />\r\n");
       out.write("\t\t\t</div>\r\n");
       out.write("\r\n");
       out.write("\t\t\t<div class=\"form-group\">\r\n");
-      out.write("\t\t\t\t<div class=\"col-sm-6 container-button\">\r\n");
-      out.write("\t\t\t\t\t<input type=\"submit\" name=\"update\" value=\"Update\"\r\n");
-      out.write("\t\t\t\t\t\tdata-ng-click=\"send()\" class=\"btn btn-info\">\r\n");
-      out.write("\t\t\t\t</div>\r\n");
-      out.write("\r\n");
+      out.write("\t\t\t\t<input type=\"text\" placeholder=\"description\" class=\"form-control\"\r\n");
+      out.write("\t\t\t\t\tdata-ng-model=\"user.password\" required />\r\n");
       out.write("\t\t\t</div>\r\n");
       out.write("\r\n");
+      out.write("\t\t\t<div class=\"form-group\">\r\n");
+      out.write("\t\t\t\t<input type=\"text\" placeholder=\"price\" class=\"form-control\"\r\n");
+      out.write("\t\t\t\t\tdata-ng-model=\"user.name\" required />\r\n");
+      out.write("\t\t\t</div>\r\n");
+      out.write("\r\n");
+      out.write("\t\t\t<div class=\"form-group\">\r\n");
+      out.write("\t\t\t\t<input type=\"submit\" class=\"btn btn-info\" data-ng-click=\"send()\" />\r\n");
+      out.write("\t\t\t</div>\r\n");
       out.write("\r\n");
       out.write("\t\t</form>\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("\t</div>\r\n");
-      out.write("</div>\r\n");
       out.write("\r\n");
       out.write("\r\n");
-      out.write("\r\n");
+      out.write("</div>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
