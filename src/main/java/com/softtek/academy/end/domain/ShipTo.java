@@ -10,11 +10,6 @@ public class ShipTo {
 	private String name;
 	
 	
-	
-	public ShipTo() {
-		super();
-	}
-
 	public ShipTo(Long id, String name) {
 		this.id = id;
 		this.name = name;

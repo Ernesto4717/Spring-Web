@@ -13,67 +13,55 @@ public class Cart {
 	private ShipTo shipTo;
 	private Status status;
 
-	public Cart() {
-		super();
-	}
+	
+    public Long getId() {
+        return this.id;
+    }
 
-	public Cart(Long id, Double linesAmount, Double shippingAmount, Double cartAmount, ShipTo shipTo, Status status) {
-		super();
-		this.id = id;
-		this.linesAmount = linesAmount;
-		this.shippingAmount = shippingAmount;
-		this.cartAmount = cartAmount;
-		this.shipTo = shipTo;
-		this.status = status;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public Long getId() {
-		return this.id;
-	}
+    public Double getLinesAmount() {
+        return this.linesAmount;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setLinesAmount(Double linesAmount) {
+        this.linesAmount = linesAmount;
+    }
 
-	public Double getLinesAmount() {
-		return this.linesAmount;
-	}
+    public Double getShippingAmount() {
+        return this.shippingAmount;
+    }
 
-	public void setLinesAmount(Double linesAmount) {
-		this.linesAmount = linesAmount;
-	}
+    public void setShippingAmount(Double shipToAmount) {
+        this.shippingAmount = shipToAmount;
+    }
 
-	public Double getShippingAmount() {
-		return this.shippingAmount;
-	}
+    public Double getCartAmount() {
+        return this.cartAmount;
+    }
 
-	public void setShippingAmount(Double shipToAmount) {
-		this.shippingAmount = shipToAmount;
-	}
+    public void setCartAmount(Double cartAmount) {
+        this.cartAmount = cartAmount;
+    }
 
-	public Double getCartAmount() {
-		return this.cartAmount;
-	}
+    public ShipTo getShipTo() {
+        return this.shipTo;
+    }
 
-	public void setCartAmount(Double cartAmount) {
-		this.cartAmount = cartAmount;
-	}
+    public void setShipTo(ShipTo shipTo) {
+        this.shipTo = shipTo;
+    }
 
-	public ShipTo getShipTo() {
-		return this.shipTo;
-	}
+    public Status getStatus() {
+        return this.status;
+    }
 
-	public void setShipTo(ShipTo shipTo) {
-		this.shipTo = shipTo;
-	}
-
-	public Status getStatus() {
-		return this.status;
-	}
-
-	public void setStatus(Status status) {
-		this.status = status;
-	}
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+	
 
 	@Override
 	public boolean equals(Object obj) {
@@ -83,9 +71,11 @@ public class Cart {
 		if (getClass() != obj.getClass())
 			return false;
 		final Cart other = (Cart) obj;
-		return Objects.equals(this.id, other.id) && Objects.equals(this.linesAmount, other.linesAmount)
-				&& Objects.equals(this.shippingAmount, other.shippingAmount)
-				&& Objects.equals(this.cartAmount, other.cartAmount) && Objects.equals(this.shipTo, other.shipTo);
+		return Objects.equals(this.id, other.id) 
+				&& Objects.equals(this.linesAmount, other.linesAmount)
+				&& Objects.equals(this.shippingAmount, other.shippingAmount) 
+				&& Objects.equals(this.cartAmount, other.cartAmount)
+				&& Objects.equals(this.shipTo, other.shipTo);
 	}
 
 	@Override

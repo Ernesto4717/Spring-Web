@@ -43,15 +43,6 @@ public class UserRepository {
 				});
 	}
 
-	public boolean updateUser(final User user){
-	 this.jdbcTemplate.update("UPDATE user u "
-				+ "SET "
-				+ "u.password = ?, "
-				+ "u.name= ? "
-		+ " WHERE u.username= ? ",user.getPassword(),user.getName(),user.getUserName());
-		return true;
-	}
-	
 	private User buildUser(final ResultSet rs) throws SQLException {
 		User user = new User();
 		final int columnCount = rs.getMetaData().getColumnCount();
@@ -59,7 +50,7 @@ public class UserRepository {
 		user.setUserName(rs.getString("username"));
 		user.setPassword(rs.getString("password"));
 		user.setName(rs.getString("name"));
-		user.setActive(rs.getString("active"));
+		user.setActive(rs.getString("active").charAt(0));
 		user.setUserRoleId(
 				new UserRole(rs.getString("user_role_id"), columnCount > 5 ? rs.getString("description") : ""));
 		return user;

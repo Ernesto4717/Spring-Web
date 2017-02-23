@@ -15,13 +15,12 @@
 				<div class="col-sm-4">
 					<label for="Username" class="sr-only">Username</label> <input
 						type="text" class="form-control input-group-lg reg_name"
-						name="username" data-ng-model="user.userName" readonly="readonly">
+						name="username" data-ng-model="user.username" readonly="readonly">
 				</div>
 				<div class="col-sm-4">
 					<label for="password" class="sr-only"></label> <input
 						type="password" class="form-control input-group-lg"
-						name="password" placeholder="Password:*"
-						data-ng-model="user.password">
+						name="password" placeholder="Password:*" data-ng-model="user.password">
 				</div>
 			</div>
 			<div class="form-group">
@@ -34,17 +33,9 @@
 
 
 			<div class="form-group">
-				<div class="col-sm-8">
-					<label for="name" class="sr-only">Name:*</label> <input type="text"
-						class="form-control input-group-lg reg_name" name="name"
-						data-ng-model="user.userRoleId.description">
-				</div>
-			</div>
-
-			<div class="form-group">
 				<div class="col-sm-6 container-button">
-					<input type="submit" name="update" value="Update"
-						data-ng-click="send()" class="btn btn-info">
+					<input type="submit" name="update" value="Update" data-ng-click="send()"
+						class="btn btn-info">
 				</div>
 
 			</div>

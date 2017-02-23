@@ -10,20 +10,7 @@ public class User {
 	private String password;
 	private String name;
 	private UserRole userRoleId;
-	private String active;
-	
-	public User() {
-		super();
-	}
-
-	public User(String userName, String password, String name, UserRole userRoleId, String active) {
-		super();
-		this.userName = userName;
-		this.password = password;
-		this.name = name;
-		this.userRoleId = userRoleId;
-		this.active = active;
-	}
+	private char active;
 
 	public String getUserName() {
 		return userName;
@@ -57,11 +44,11 @@ public class User {
 		this.userRoleId = userRoleId;
 	}
 
-	public String getActive() {
+	public char getActive() {
 		return active;
 	}
 
-	public void setActive(String active) {
+	public void setActive(char active) {
 		this.active = active;
 	}
 

@@ -11,11 +11,6 @@ public class Status {
 	private String type;
 
 	
-	public Status() {
-		super();
-	}
-
-
 	public Status(Long id, String description, String type) {
 		this.id = id;
 		this.description = description;

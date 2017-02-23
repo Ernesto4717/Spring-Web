@@ -2,20 +2,14 @@ package com.softtek.academy.end.web;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.softtek.academy.end.domain.User;
 import com.softtek.academy.end.services.UserService;
@@ -53,33 +47,33 @@ public class UserController {
 		return "editUser";
 	}
 	
-	@RequestMapping(value = "/editData")
-	public ResponseEntity<User> editUser(@RequestParam String username) {
-		
-		User user = userService.findOne(username);
-		return new ResponseEntity<User>(user, HttpStatus.OK);
-	}
+//	@RequestMapping(value = "/editData")
+//	public ResponseEntity<User> editUser(@RequestParam String username) {
+//		
+//		User user = userService.user(username);
+//		return new ResponseEntity<User>(user, HttpStatus.OK);
+//	}
 
 	@RequestMapping(value = "/create")
 	public String create() {
 		return "createUser";
 	}
 
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String updateUser(@ModelAttribute User user, HttpServletRequest request) {
-
-		if (userService.createUser(user)) {
-			return "redirect:/User/List";
-		}
-		return "redirect:/User/edit?username=" + user.getUserName() + "&status=Not valid";
-
-	}
-
-	@RequestMapping(value = "/add", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
-	public String addUser(@RequestBody User user) {
-		if (userService.createUser(user)) {
-			return "users";
-		}
-		return "create";
-	}
+//	@RequestMapping(value = "/update", method = RequestMethod.POST)
+//	public String updateUser(@ModelAttribute User user, HttpServletRequest request) {
+//
+//		if (userService.update(user)) {
+//			return "redirect:/User/List";
+//		}
+//		return "redirect:/User/edit?username=" + user.getUsername() + "&status=Not valid";
+//
+//	}
+//
+//	@RequestMapping(value = "/add", method = RequestMethod.POST)
+//	public String addUser(@RequestBody User user) {
+//		if (userService.create(user)) {
+//			return "users";
+//		}
+//		return "create";
+//	}
 }
